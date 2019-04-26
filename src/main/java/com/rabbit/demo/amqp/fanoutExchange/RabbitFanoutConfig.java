@@ -32,15 +32,18 @@ public class RabbitFanoutConfig {
     }
 
     @Bean
+    FanoutExchange fanoutExchange2() {
+        return new FanoutExchange("fanoutExchange2");
+    }
+
+    @Bean
     Binding bindingExchangeQueuePenglei(Queue queuePenglei, FanoutExchange fanoutExchange) {
-        System.out.println(queuePenglei);
         return BindingBuilder.bind(queuePenglei).to(fanoutExchange);
     }
 
     @Bean
-    Binding bindingExchangeQueueSouyunku(Queue queueSouyunku, FanoutExchange fanoutExchange) {
-        System.out.println(queueSouyunku);
-        return BindingBuilder.bind(queueSouyunku).to(fanoutExchange);
+    Binding bindingExchangeQueueSouyunku(Queue queueSouyunku, FanoutExchange fanoutExchange2) {
+        return BindingBuilder.bind(queueSouyunku).to(fanoutExchange2);
     }
 
 }

@@ -14,16 +14,13 @@ public class AmqpService {
     private AmqpTemplate rabbitTemplate;
 
     public void fanout(String routeKey){
-        String context = "此消息在，默认的交换机模式队列下，有 DirectReceiver 可以收到";
-
-        String exchange = "fanoutExchange";
-
-        context = "context:" + exchange + ",routeKey:" + routeKey + ",context:" + context;
-
-        System.out.println("sendDirectTest : " + context);
+        RabbitParams params = new RabbitParams();
+        params.setContent("你好");
+        params.setPhone("18672793611");
+        params.setName("topic");
 
         // 推荐使用 sendHello（） 方法写法，这种方式在 Direct Exchange 多此一举，没必要这样写
-        this.rabbitTemplate.convertAndSend(exchange, routeKey, context);
+        this.rabbitTemplate.convertAndSend("fanoutExchange2", null, params);
     }
 
 
