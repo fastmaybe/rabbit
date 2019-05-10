@@ -32,5 +32,9 @@ public class AmqpService {
         this.rabbitTemplate.convertAndSend("topicExchange" , ExchangeRouteKey.TOPIC_ROUTEKEY_NAME_ONE, params);
     }
 
+    public void sa(){
+        System.out.println();
+    }
+
 
 }
