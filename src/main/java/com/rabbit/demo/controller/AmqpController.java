@@ -1,5 +1,6 @@
 package com.rabbit.demo.controller;
 
+import com.rabbit.demo.pojo.User;
 import com.rabbit.demo.service.AmqpService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,13 @@ public class AmqpController {
     public void map(String phone,String uid){
         System.out.println(phone);
         System.out.println(uid);
+    }
+
+    @RequestMapping("json")
+    public Object json(){
+        User user = new User();
+        user.setName("123");
+        return  user;
     }
 
 }
