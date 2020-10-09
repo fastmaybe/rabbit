@@ -12,11 +12,13 @@ public class FanoutReceiver {
 
     @RabbitListener(queues =RabbitFanoutConfig.PENGLEI)
     public void process(RabbitParams params, Message message, Channel channel) {
+        System.out.println(RabbitFanoutConfig.PENGLEI);
         System.out.println("接收者1 FanoutReceiver1," + params);
     }
 
     @RabbitListener(queues = RabbitFanoutConfig.SOUYUNKU)
     public void process2(RabbitParams params, Message message, Channel channel) {
+        System.out.println(RabbitFanoutConfig.SOUYUNKU);
         System.out.println("接收者1 FanoutReceiver2," + params);
     }
 }

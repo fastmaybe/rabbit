@@ -3,6 +3,7 @@ package com.rabbit.demo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -13,19 +14,22 @@ public class DemoApplicationTests {
 
     @Autowired
     private AmqpTemplate rabbitTemplate;
+    @Autowired
+    private RabbitTemplate rabbitTemplate2;
 
     @Test
     public void sendHelloTest() {
 
         String context = "此消息在，默认的交换机模式队列下，有 helloReceiver 可以收到";
 
-        String routeKey = "hello";
+        String routeKey = "direct";
 
         context = "routeKey:" + routeKey + ",context:" + context;
 
         System.out.println("sendHelloTest : " + context);
 
         this.rabbitTemplate.convertAndSend(routeKey, context);
+        rabbitTemplate2.convertAndSend("","","");
     }
 
     @Test

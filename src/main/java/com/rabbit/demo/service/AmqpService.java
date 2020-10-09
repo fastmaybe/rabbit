@@ -29,7 +29,7 @@ public class AmqpService {
         params.setContent("你好");
         params.setPhone("18672793611");
         params.setName("topic");
-        this.rabbitTemplate.convertAndSend("topicExchange" , ExchangeRouteKey.TOPIC_ROUTEKEY_NAME_ONE, params);
+        this.rabbitTemplate.convertAndSend("topicExchange" , routekey, params);
     }
 
     public void sas(){

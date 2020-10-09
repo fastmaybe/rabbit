@@ -6,22 +6,19 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-@Component
-public class FanoutReceiver2 {
+//@Component
+public class FanoutReceiver3 {
 
 
     @RabbitListener(queues =RabbitFanoutConfig.PENGLEI)
     public void process(RabbitParams params, Message message, Channel channel) {
         System.out.println(RabbitFanoutConfig.PENGLEI);
-        System.out.println("接收者2  " + params);
-        System.out.println("接收者2  " + message);
+        System.out.println("接收者1 FanoutReceiver1," + params);
     }
 
-    @RabbitListener(queues = RabbitFanoutConfig.SOUYUNKU)
+    @RabbitListener(queues = RabbitFanoutConfig.SOUYUNKU+"2")
     public void process2(RabbitParams params, Message message, Channel channel) {
-        System.out.println(RabbitFanoutConfig.SOUYUNKU);
-        System.out.println("接收者2  " + params);
-        System.out.println("接收者2  " + message);
+        System.out.println(RabbitFanoutConfig.SOUYUNKU+"2");
+        System.out.println("接收者1 FanoutReceiver2," + params);
     }
 }
-
