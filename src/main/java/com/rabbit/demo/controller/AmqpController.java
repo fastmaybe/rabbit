@@ -56,4 +56,9 @@ public class AmqpController {
         messageServiceImpl.sendMsg("test_queue_1","hello i am delay msg");
     }
 
+
+    @RequestMapping("dead")
+    public void retryDead(){
+        amqpService.retrtDead("rounteKey" );
+    }
 }
