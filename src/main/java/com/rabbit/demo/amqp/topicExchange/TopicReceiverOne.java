@@ -35,6 +35,7 @@ public class TopicReceiverOne {
                 /**
                  * 当在yml 配置了 重试机制后 这里重新入队就不要配置了 新入队后 又会重试  导致无限先死循环
                  */
+                //重试时候 可以将此消息重新发送 而不是立马入队  或者记录此消息失败次数 超过三次 记录下来 人工处理
 //                channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, true);
 //            } catch (IOException e1) {
 //                System.out.println("1111111111");
